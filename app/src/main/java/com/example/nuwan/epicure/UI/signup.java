@@ -46,6 +46,7 @@ public class signup extends AppCompatActivity {
     private void backToLogin() {
         Intent i = new Intent(getApplicationContext(),login.class);
         i.putExtra("key_email",etUsername_signup.getText());
+        finish();
         startActivity(i);
     }
 
