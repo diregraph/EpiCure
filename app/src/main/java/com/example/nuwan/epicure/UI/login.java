@@ -7,14 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.example.nuwan.epicure.R;
+
 
 public class login extends AppCompatActivity {
     private EditText etUsername_login;
     private EditText etPassword_login;
     private Button btnLogin;
     private TextView tvSignup;
+    private static final String tag = "tag_login" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +33,20 @@ public class login extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(getApplicationContext(),home.class);
-                        i.putExtra("key_email",etUsername_login.getText().toString());
-                        finish();
-                        startActivity(i);
-                    }
+                        String strUsername = etUsername_login.getText().toString();
+                        String strPassword = etPassword_login.getText().toString();
+                        if (!strUsername.isEmpty() && !strPassword.isEmpty() ) {
+                            Intent i = new Intent(getApplicationContext(), home.class);
+                            i.putExtra("key_email",strUsername ); //have to get from the json
+                            //i.putExtra("key_Name",) have to get the name from the json
+                            finish();
+                            startActivity(i);
+                        } else if (strUsername.isEmpty() ){
+                            Toast.makeText(getApplicationContext(),"Invalid Email",Toast.LENGTH_SHORT).show();
+                        } else if (strPassword.isEmpty() ){
+                            Toast.makeText(getApplicationContext(),"Incorrect Password",Toast.LENGTH_SHORT).show();
+                        }
+                   }
                 }
         );
 

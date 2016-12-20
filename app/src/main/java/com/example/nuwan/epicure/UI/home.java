@@ -1,8 +1,6 @@
 package com.example.nuwan.epicure.UI;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,22 +16,16 @@ import com.example.nuwan.epicure.R;
 
 public class home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-private TextView tvNavHeaderEmail;
+    private TextView tvNavHeaderEmail;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Diseases");
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -91,17 +83,19 @@ private TextView tvNavHeaderEmail;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_report_disease) {
+        if (id == R.id.nav_disease) {
+            toolbar.setTitle("Diseases");
 
-        } else if (id == R.id.nav_report_history) {
-
-        } else if (id == R.id.nav_search_disease) {
-
-        } else if (id == R.id.nav_search_location) {
+        } else if (id == R.id.nav_location) {
+            toolbar.setTitle("Location");
 
         } else if (id == R.id.nav_profile) {
+            toolbar.setTitle("Profile");
+
+        } else if (id == R.id.nav_logout){
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

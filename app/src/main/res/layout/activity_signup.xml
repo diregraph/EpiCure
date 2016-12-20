@@ -10,15 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nuwan.epicure.UI.signup">
 
-    <ImageView android:src="@drawable/login_logo"
-        android:layout_width="match_parent"
-        android:layout_height="100dip"
-        android:layout_marginBottom="24dp"
-        android:layout_gravity="center_horizontal" />
-
     <!-- First Name Label and Input -->
     <android.support.design.widget.TextInputLayout
-        android:layout_marginTop="130dip"
+        android:layout_marginTop="10dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_fname"
         android:layout_height="wrap_content">
@@ -32,6 +26,7 @@
     <!-- Last Name Label and Input -->
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/lbl_fname"
+        android:layout_marginTop="5dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_lname"
         android:layout_height="wrap_content">
@@ -42,14 +37,16 @@
             android:hint="Last Name"/>
     </android.support.design.widget.TextInputLayout>
 
-    <!-- Username Label and Input -->
+    <!-- Email Label and Input -->
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/lbl_lname"
+        android:layout_marginTop="5dip"
         android:layout_width="match_parent"
-        android:id="@+id/lbl_username_signup"
+        android:id="@+id/lbl_email_signup"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/input_username_signup"
+            android:id="@+id/input_email_signup"
+            android:inputType="textWebEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"/>
@@ -57,7 +54,8 @@
 
     <!-- Password Label and Input -->
     <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/lbl_username_signup"
+        android:layout_below="@+id/lbl_email_signup"
+        android:layout_marginTop="5dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_password_signup"
         android:layout_height="wrap_content">
@@ -72,6 +70,7 @@
     <!-- Confirm Password Label and Input -->
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/lbl_password_signup"
+        android:layout_marginTop="5dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_confirm_password_signup"
         android:layout_height="wrap_content">
@@ -83,11 +82,30 @@
             android:hint="Confirm Password"/>
     </android.support.design.widget.TextInputLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Type"
+        android:layout_below="@+id/lbl_confirm_password_signup"
+        android:layout_marginTop="5dip"
+        android:id="@+id/tv_usertype"
+        style="@style/InputLabel" />
+
+    <Spinner
+        android:id="@+id/spinner_usertype"
+        android:layout_below="@+id/tv_usertype"
+        android:layout_marginTop="5dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spinner_usertype"
+        android:prompt="@string/prompt_login" />
+
     <Button
         android:layout_width="150dip"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/lbl_confirm_password_signup"
+        android:layout_below="@+id/spinner_usertype"
+        android:layout_marginTop="5dip"
         android:id="@+id/btn_create"
         android:text="Create"/>
 
@@ -95,6 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_create"
+        android:layout_marginTop="5dip"
         android:layout_centerInParent="true"
         android:id="@+id/tv_haveAnAcc"
         android:text="Have an Account? Login Here"/>

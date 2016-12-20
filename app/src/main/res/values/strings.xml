@@ -6,4 +6,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="prompt_login">elect User Type</string>
+
+    <string-array name="spinner_usertype">
+        <item>Normal</item>
+        <item>Public Health Officer</item>
+        <item>Medical Officer</item>
+    </string-array>
 </resources>
