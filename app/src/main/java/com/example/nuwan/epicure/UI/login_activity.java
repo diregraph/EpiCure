@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.nuwan.epicure.R;
 
 
-public class login extends AppCompatActivity {
+public class login_activity extends AppCompatActivity {
     private EditText etUsername_login;
     private EditText etPassword_login;
     private Button btnLogin;
@@ -33,15 +33,15 @@ public class login extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String strUsername = etUsername_login.getText().toString();
+                        CharSequence charseqUsername = etUsername_login.getText();
                         String strPassword = etPassword_login.getText().toString();
-                        if (!strUsername.isEmpty() && !strPassword.isEmpty() ) {
-                            Intent i = new Intent(getApplicationContext(), home.class);
-                            i.putExtra("key_email",strUsername ); //have to get from the json
+                        if (isValidEmail(charseqUsername) && !strPassword.isEmpty() ) {
+                            Intent i = new Intent(getApplicationContext(), home_activity.class);
+                            i.putExtra("key_email",charseqUsername ); //have to get from the json
                             //i.putExtra("key_Name",) have to get the name from the json
                             finish();
                             startActivity(i);
-                        } else if (strUsername.isEmpty() ){
+                        } else if (!isValidEmail(charseqUsername) ){
                             Toast.makeText(getApplicationContext(),"Invalid Email",Toast.LENGTH_SHORT).show();
                         } else if (strPassword.isEmpty() ){
                             Toast.makeText(getApplicationContext(),"Incorrect Password",Toast.LENGTH_SHORT).show();
@@ -61,8 +61,16 @@ public class login extends AppCompatActivity {
 
     }
 
+    private boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
     private void signupProcess() {
-        Intent i = new Intent(getApplicationContext(),signup.class);
+        Intent i = new Intent(getApplicationContext(),signup_activity.class);
         startActivity(i);
     }
 

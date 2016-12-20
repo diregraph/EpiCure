@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.nuwan.epicure.DATABASE.database;
 import com.example.nuwan.epicure.R;
 
-public class signup extends AppCompatActivity {
+public class signup_activity extends AppCompatActivity {
     private EditText etFName_signup;
     private EditText etLName_signup;
     private EditText etUsername_signup;
@@ -23,6 +23,11 @@ public class signup extends AppCompatActivity {
     private database sqliteDB;
     private TextView tvHaveAnAcc;
     private Spinner spinnerUsertype;
+
+    @Override
+    public void onBackPressed() {
+        backToLogin();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,24 +40,24 @@ public class signup extends AppCompatActivity {
                     public void onClick(View v) {
                         String strFName = etFName_signup.getText().toString();
                         String strLName = etLName_signup.getText().toString();
-                        String strUsername = etUsername_signup.getText().toString();
+                        CharSequence charseqUsername = etUsername_signup.getText();
                         String strPassword = etPassword_signup.getText().toString();
                         String strCPassword = etCPassword_signup.getText().toString();
                         String strUsertype = spinnerUsertype.getSelectedItem().toString();
-                        if (!strFName.isEmpty() && !strLName.isEmpty() &&!strUsername.isEmpty() &&
+                        if (!strFName.isEmpty() && !strLName.isEmpty() && isValidEmail(charseqUsername) &&
                                 !strPassword.isEmpty() && !strCPassword.isEmpty() && !strUsertype.isEmpty() ) {
-                            Intent i = new Intent(getApplicationContext(), home.class);
-                            i.putExtra("key_email",strUsername); // have to get from the json
+                            Intent i = new Intent(getApplicationContext(), home_activity.class);
+                            i.putExtra("key_email",charseqUsername.toString()); // have to get from the json
                             sqliteDB = new database(getApplicationContext(),"EpiCure",null, 1);
                             finish();
-                            //have to finish the login activity
+                            //have to finish the login_activity activity
                             startActivity(i);
 
                         } else if (strFName.isEmpty() ){
                             Toast.makeText(getApplicationContext(),"Enter First Name",Toast.LENGTH_SHORT).show();
                         } else if (strLName.isEmpty() ){
                             Toast.makeText(getApplicationContext(),"Enter Last Name",Toast.LENGTH_SHORT).show();
-                        } else if (strUsername.isEmpty() ){
+                        } else if (!isValidEmail(charseqUsername) ){
                             Toast.makeText(getApplicationContext(),"Invalid Email",Toast.LENGTH_SHORT).show();
                         } else if (strPassword.isEmpty() ){
                             Toast.makeText(getApplicationContext(),"Enter Password",Toast.LENGTH_SHORT).show();
@@ -76,9 +81,17 @@ public class signup extends AppCompatActivity {
         );
     }
 
+    private boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
     private void backToLogin() {
-        Intent i = new Intent(getApplicationContext(),login.class);
-        i.putExtra("key_email",etUsername_signup.getText());
+        Intent i = new Intent(getApplicationContext(),login_activity.class);
+        i.putExtra("key_email",etUsername_signup.getText().toString());
         finish();
         startActivity(i);
     }

@@ -1,6 +1,8 @@
 package com.example.nuwan.epicure.UI;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,9 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.nuwan.epicure.FRAGMENT.disease_fragment;
+import com.example.nuwan.epicure.FRAGMENT.location_fragment;
 import com.example.nuwan.epicure.R;
 
-public class home extends AppCompatActivity
+public class home_activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private TextView tvNavHeaderEmail;
     private Toolbar toolbar;
@@ -25,6 +29,10 @@ public class home extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Diseases");
         setSupportActionBar(toolbar);
+
+        disease_fragment disease_fragment = new disease_fragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frmMain,disease_fragment).commit();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -82,12 +90,17 @@ public class home extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
         if (id == R.id.nav_disease) {
             toolbar.setTitle("Diseases");
+            disease_fragment disease_fragment = new disease_fragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.frmMain,disease_fragment).commit();
 
         } else if (id == R.id.nav_location) {
             toolbar.setTitle("Location");
+            location_fragment location = new location_fragment();
+            fragTrans.replace(R.id.frmMain,location);
 
         } else if (id == R.id.nav_profile) {
             toolbar.setTitle("Profile");
@@ -95,7 +108,7 @@ public class home extends AppCompatActivity
         } else if (id == R.id.nav_logout){
 
         }
-
+        fragTrans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -8,18 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.login">
+        <activity android:name=".UI.login_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.signup" />
+        <activity android:name=".UI.signup_activity" />
         <activity
-            android:name=".UI.home"
+            android:name=".UI.home_activity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".FRAGMENT.location_fragment"></activity>
     </application>
 
 </manifest>

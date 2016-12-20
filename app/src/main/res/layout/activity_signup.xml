@@ -8,25 +8,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.nuwan.epicure.UI.signup">
+    tools:context="com.example.nuwan.epicure.UI.signup_activity">
 
     <!-- First Name Label and Input -->
     <android.support.design.widget.TextInputLayout
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="0dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_fname"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
         <EditText
             android:id="@+id/input_fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name"/>
+            android:hint="First Name"
+            android:textSize="14sp"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Last Name Label and Input -->
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/lbl_fname"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="0dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_lname"
         android:layout_height="wrap_content">
@@ -34,13 +36,14 @@
             android:id="@+id/input_lname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Last Name"/>
+            android:hint="Last Name"
+            android:textSize="14sp"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Email Label and Input -->
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/lbl_lname"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="0dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_email_signup"
         android:layout_height="wrap_content">
@@ -49,13 +52,14 @@
             android:inputType="textWebEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"/>
+            android:hint="Username"
+            android:textSize="14sp"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Password Label and Input -->
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/lbl_email_signup"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="0dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_password_signup"
         android:layout_height="wrap_content">
@@ -64,13 +68,14 @@
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:textSize="14sp"/>
     </android.support.design.widget.TextInputLayout>
 
     <!-- Confirm Password Label and Input -->
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/lbl_password_signup"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="0dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_confirm_password_signup"
         android:layout_height="wrap_content">
@@ -79,7 +84,8 @@
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Password"/>
+            android:hint="Confirm Password"
+            android:textSize="14sp"/>
     </android.support.design.widget.TextInputLayout>
 
     <TextView
@@ -87,25 +93,40 @@
         android:layout_height="wrap_content"
         android:text="User Type"
         android:layout_below="@+id/lbl_confirm_password_signup"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="0dip"
         android:id="@+id/tv_usertype"
         style="@style/InputLabel" />
 
     <Spinner
         android:id="@+id/spinner_usertype"
         android:layout_below="@+id/tv_usertype"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="0dip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/spinner_usertype"
-        android:prompt="@string/prompt_login" />
+        android:entries="@array/spinner_usertype" />
+
+    <!-- Reg Number Label and Input -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/spinner_usertype"
+        android:layout_marginTop="0dip"
+        android:layout_width="match_parent"
+        android:id="@+id/lbl_regnum_signup"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/input_regnum_signup"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Registration Number"
+            android:textSize="14sp"/>
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="150dip"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/spinner_usertype"
-        android:layout_marginTop="5dip"
+        android:layout_below="@+id/lbl_regnum_signup"
+        android:layout_marginTop="0dip"
         android:id="@+id/btn_create"
         android:text="Create"/>
 
@@ -113,10 +134,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_create"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="0dip"
         android:layout_centerInParent="true"
         android:id="@+id/tv_haveAnAcc"
         android:text="Have an Account? Login Here"/>
-
 
 </RelativeLayout>

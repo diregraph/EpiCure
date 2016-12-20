@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.nuwan.epicure.UI.home">
+    tools:context="com.example.nuwan.epicure.UI.home_activity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +21,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_activity_home" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:id="@+id/frmMain">
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
