@@ -37,6 +37,6 @@ public class disease_fragment extends Fragment {
         lvDisease = (ListView)view.findViewById(R.id.lstDisease);
         lnkAddDisease = (TextView)view.findViewById(R.id.tv_add_disease);
         lnkAddDetails = (TextView)view.findViewById(R.id.tv_add_details);
-        lnkAddDetails = (TextView)view.findViewById(R.id.tv_edit_details);
+        lnkAddDetails = (TextView)view.findViewById(R.id.tv_edit_disease);
     }
 }

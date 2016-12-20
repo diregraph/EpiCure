@@ -47,7 +47,7 @@ public class signup_activity extends AppCompatActivity {
                         String strCPassword = etCPassword_signup.getText().toString();
                         String strUsertype = spinnerUsertype.getSelectedItem().toString();
                         if (!strFName.isEmpty() && !strLName.isEmpty() && isValidEmail(charseqUsername) &&
-                                !strPassword.isEmpty() && !strCPassword.isEmpty() && !strUsertype.isEmpty() ) {
+                                strPassword.equals(strCPassword) && !strUsertype.isEmpty() ) {
                             Intent i = new Intent(getApplicationContext(), home_activity.class);
                             i.putExtra("key_email",charseqUsername.toString()); // have to get from the json
                             sqliteDB = new database(getApplicationContext(),"EpiCure",null, 1);
@@ -64,7 +64,9 @@ public class signup_activity extends AppCompatActivity {
                         } else if (strPassword.isEmpty() ){
                             Toast.makeText(getApplicationContext(),"Enter Password",Toast.LENGTH_SHORT).show();
                         } else if (strCPassword.isEmpty() ){
-                            Toast.makeText(getApplicationContext(),"Password mismatch",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Confirm Password",Toast.LENGTH_SHORT).show();
+                        } else if (!strPassword.equals(strCPassword)){
+                            Toast.makeText(getApplicationContext(),"Password Mismatch",Toast.LENGTH_SHORT).show();
                         } else if (strUsertype.isEmpty() ){
                             Toast.makeText(getApplicationContext(),"Select User Type",Toast.LENGTH_SHORT).show();
                         }
@@ -95,7 +97,6 @@ public class signup_activity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 etRegNum.setEnabled(false);
-
             }
         });
     }
@@ -116,8 +117,8 @@ public class signup_activity extends AppCompatActivity {
     }
 
     private void init() {
-        etFName_signup = (EditText) findViewById(R.id.input_fname_signup);
-        etLName_signup = (EditText) findViewById(R.id.input_lname_profile);
+        etFName_signup = (EditText) findViewById(R.id.input_fname);
+        etLName_signup = (EditText) findViewById(R.id.input_lname);
         etUsername_signup = (EditText) findViewById(R.id.input_email_signup);
         etPassword_signup = (EditText) findViewById(R.id.input_password_profile);
         etCPassword_signup = (EditText) findViewById(R.id.input_confirm_password_profile);

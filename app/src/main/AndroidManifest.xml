@@ -21,7 +21,12 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity android:name=".FRAGMENT.location_fragment" />
-        <activity android:name=".FRAGMENT.profile_fragment"></activity>
+        <activity android:name=".FRAGMENT.profile_fragment" />
+        <activity android:name=".FRAGMENT.detailed_disease_fragment" />
+        <activity android:name=".FRAGMENT.add_detail_fragment" />
+        <activity android:name=".FRAGMENT.add_disease_fragment" />
+        <activity android:name=".FRAGMENT.edit_disease_fragment" />
+        <activity android:name=".FRAGMENT.detailed_location_fragment"></activity>
     </application>
 
 </manifest>

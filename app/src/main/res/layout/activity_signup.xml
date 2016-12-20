@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main2"
+    android:id="@+id/activity_signup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -14,11 +14,11 @@
     <android.support.design.widget.TextInputLayout
         android:layout_marginTop="0dip"
         android:layout_width="match_parent"
-        android:id="@+id/lbl_fname_signup"
+        android:id="@+id/lbl_fname"
         android:layout_height="wrap_content"
         >
         <EditText
-            android:id="@+id/input_fname_signup"
+            android:id="@+id/input_fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
@@ -27,13 +27,13 @@
 
     <!-- Last Name Label and Input -->
     <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/lbl_fname_signup"
+        android:layout_below="@+id/lbl_fname"
         android:layout_marginTop="0dip"
         android:layout_width="match_parent"
-        android:id="@+id/lbl_lname_profile"
+        android:id="@+id/lbl_lname"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/input_lname_profile"
+            android:id="@+id/input_lname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Last Name"
@@ -42,7 +42,7 @@
 
     <!-- Email Label and Input -->
     <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/lbl_lname_profile"
+        android:layout_below="@+id/lbl_lname"
         android:layout_marginTop="0dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_email_signup"

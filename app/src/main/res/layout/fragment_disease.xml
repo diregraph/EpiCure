@@ -32,18 +32,18 @@
             android:text="Add Disease"/>
 
         <TextView
-            android:id="@+id/tv_edit_details"
+            android:id="@+id/tv_edit_disease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/tv_add_disease"
             android:layout_marginLeft="27sp"
-            android:text="Edit Details"/>
+            android:text="Edit Disease"/>
 
         <TextView
             android:id="@+id/tv_add_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_edit_details"
+            android:layout_toRightOf="@id/tv_edit_disease"
             android:layout_marginLeft="27sp"
             android:text="Add Details"/>
     </RelativeLayout>
