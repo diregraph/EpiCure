@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.nuwan.epicure.FRAGMENT.disease_fragment;
 import com.example.nuwan.epicure.FRAGMENT.location_fragment;
+import com.example.nuwan.epicure.FRAGMENT.profile_fragment;
 import com.example.nuwan.epicure.R;
 
 public class home_activity extends AppCompatActivity
@@ -91,10 +92,11 @@ public class home_activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
         if (id == R.id.nav_disease) {
             toolbar.setTitle("Diseases");
             disease_fragment disease_fragment = new disease_fragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.frmMain,disease_fragment).commit();
 
         } else if (id == R.id.nav_location) {
@@ -104,6 +106,8 @@ public class home_activity extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
             toolbar.setTitle("Profile");
+            profile_fragment profile = new profile_fragment();
+            fragTrans.replace(R.id.frmMain,profile);
 
         } else if (id == R.id.nav_logout){
 

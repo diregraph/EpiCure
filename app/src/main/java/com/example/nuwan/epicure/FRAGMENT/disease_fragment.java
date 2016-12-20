@@ -18,11 +18,12 @@ import com.example.nuwan.epicure.R;
  */
 
 public class disease_fragment extends Fragment {
+    private EditText etSearch;
     private TextView lnkAddDisease;
     private TextView lnkEditDetails;
     private TextView lnkAddDetails;
     private ListView lvDisease;
-    private EditText etSearch;
+
 
     @Nullable
     @Override
@@ -32,10 +33,10 @@ public class disease_fragment extends Fragment {
         return view;
     }
     private void init(View view) {
+        etSearch = (EditText)view.findViewById(R.id.etSearchDisease);
         lvDisease = (ListView)view.findViewById(R.id.lstDisease);
         lnkAddDisease = (TextView)view.findViewById(R.id.tv_add_disease);
         lnkAddDetails = (TextView)view.findViewById(R.id.tv_add_details);
         lnkAddDetails = (TextView)view.findViewById(R.id.tv_edit_details);
-        etSearch = (EditText)view.findViewById(R.id.etSearchDisease);
     }
 }

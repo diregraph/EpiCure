@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import com.example.nuwan.epicure.R;
 
 public class location_fragment extends Fragment {
-
+    private EditText etSearchLocation;
+    private ListView lvLocation;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class location_fragment extends Fragment {
         return view;
     }
     private void init(View view) {
-
+        etSearchLocation = (EditText)view.findViewById(R.id.etSearchLocation);
+        lvLocation = (ListView)view.findViewById(R.id.lstLocation);
     }
 }

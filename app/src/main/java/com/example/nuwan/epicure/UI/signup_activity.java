@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -23,6 +24,7 @@ public class signup_activity extends AppCompatActivity {
     private database sqliteDB;
     private TextView tvHaveAnAcc;
     private Spinner spinnerUsertype;
+    private EditText etRegNum;
 
     @Override
     public void onBackPressed() {
@@ -79,6 +81,23 @@ public class signup_activity extends AppCompatActivity {
                     }
                 }
         );
+
+        spinnerUsertype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (spinnerUsertype.getSelectedItem().toString().equals("Normal")){
+                    etRegNum.setEnabled(false);
+                } else {
+                    etRegNum.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                etRegNum.setEnabled(false);
+
+            }
+        });
     }
 
     private boolean isValidEmail(CharSequence target) {
@@ -97,13 +116,14 @@ public class signup_activity extends AppCompatActivity {
     }
 
     private void init() {
-        etFName_signup = (EditText) findViewById(R.id.input_fname);
-        etLName_signup = (EditText) findViewById(R.id.input_lname);
+        etFName_signup = (EditText) findViewById(R.id.input_fname_signup);
+        etLName_signup = (EditText) findViewById(R.id.input_lname_profile);
         etUsername_signup = (EditText) findViewById(R.id.input_email_signup);
-        etPassword_signup = (EditText) findViewById(R.id.input_password_signup);
-        etCPassword_signup = (EditText) findViewById(R.id.input_confirm_password_signup);
+        etPassword_signup = (EditText) findViewById(R.id.input_password_profile);
+        etCPassword_signup = (EditText) findViewById(R.id.input_confirm_password_profile);
         btnCreate = (Button) findViewById(R.id.btn_create);
         tvHaveAnAcc = (TextView) findViewById(R.id.tv_haveAnAcc);
         spinnerUsertype = (Spinner) findViewById(R.id.spinner_usertype);
+        etRegNum = (EditText) findViewById(R.id.input_regnum_signup);
     }
 }

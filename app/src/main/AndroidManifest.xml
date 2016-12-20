@@ -20,7 +20,8 @@
             android:name=".UI.home_activity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".FRAGMENT.location_fragment"></activity>
+        <activity android:name=".FRAGMENT.location_fragment" />
+        <activity android:name=".FRAGMENT.profile_fragment"></activity>
     </application>
 
 </manifest>
