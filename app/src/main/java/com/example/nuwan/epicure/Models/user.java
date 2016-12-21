@@ -10,13 +10,15 @@ public class user {
     private String lname;
     private String role;
     private String token;
+    private String password;
     private Integer logged_in;
 
-    public void user(String email, String fname, String lname, String role, String token, Integer logged_in ){
+    public void user(String email, String fname, String lname, String role, String token, String password, Integer logged_in ){
         this.email = email;
         this.fname = fname;
         this.lname = lname;
         this.role = role;
+        this.password = password;
         this.token = token;
         this.logged_in = logged_in;
     }
@@ -27,5 +29,9 @@ public class user {
 
     public void setLName(String lname){
         this.lname = lname;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 }

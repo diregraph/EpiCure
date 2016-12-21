@@ -26,7 +26,7 @@ public class database extends SQLiteOpenHelper{
                 "fname VARCHAR(20), " +
                 "lname VARCHAR(30), " +
                 "role VARCHAR(10), " +
-                "role VARCHAR(10), " +
+                "password VARCHAR(50), " +
                 "token VARCHAR(100)" +
                 "logged_in INTEGER);";
         //Log.i(constants.TAG,command);
