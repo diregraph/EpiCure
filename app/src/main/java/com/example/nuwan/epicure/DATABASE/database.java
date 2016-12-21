@@ -23,15 +23,31 @@ public class database extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         command = "CREATE TABLE IF NOT EXISTS user_login_details(" +
                 "email VARCHAR(50) PRIMARY KEY, " +
-                "name VARCHAR(60), " +
+                "fname VARCHAR(20), " +
+                "lname VARCHAR(30), " +
                 "role VARCHAR(10), " +
-                "status INTEGER);";
+                "role VARCHAR(10), " +
+                "token VARCHAR(100)" +
+                "logged_in INTEGER);";
         //Log.i(constants.TAG,command);
         sqLiteDatabase.execSQL(command);
 
         command = "CREATE TABLE IF NOT EXISTS diseases(" +
                 "disease_name VARCHAR(100) PRIMARY KEY, " +
-                "";
+                "symptoms VARCHAR(500), " +
+                "causes VARCHAR(500), " +
+                "precautions VARCHAR(500), " +
+                "first_aid VARCHAR(500), " +
+                "added_by VARCHAR(100));";
+        //Log.i(constants.TAG,command);
+        sqLiteDatabase.execSQL(command);
+
+        command = "CREATE TABLE IF NOT EXISTS disease_reports_local(" +
+                "local_report_id INTEGER PRIMARY KEY AUTOINCREMENT(" +
+                "disease_name_local VARCHAR(100), " +
+                "location_local VARCHAR(50), " +
+                "email VARCHAR(50), +" +
+                "sync_status INTEGER);";
     }
 
     @Override
