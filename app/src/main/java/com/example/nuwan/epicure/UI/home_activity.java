@@ -25,6 +25,7 @@ import com.example.nuwan.epicure.R;
 public class home_activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private TextView tvNavHeaderEmail;
+    private TextView tvNavHeaderName;
     private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,10 @@ public class home_activity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Diseases");
         setSupportActionBar(toolbar);
+        Bundle bundle = getIntent().getExtras();
 
         disease_fragment disease_fragment = new disease_fragment();
+        disease_fragment.setEmailDiseaseFrag(bundle.getCharSequence("key_email").toString());
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frmMain,disease_fragment).commit();
 
@@ -50,9 +53,13 @@ public class home_activity extends AppCompatActivity
 
         View header = navigationView.getHeaderView(0);
         tvNavHeaderEmail = (TextView) header.findViewById(R.id.tv_navHeaderEmail);
-        Bundle bundle = getIntent().getExtras();
+        tvNavHeaderName = (TextView) header.findViewById(R.id.tv_navHeaderName);
             if (bundle != null ){
+                String fname =  bundle.getCharSequence("first_name").toString();
+                String lname =  bundle.getCharSequence("last_name").toString();
+                tvNavHeaderName.setText(fname+" "+lname);
                 tvNavHeaderEmail.setText(bundle.getCharSequence("key_email").toString());
+
             }
     }
 

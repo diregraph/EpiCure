@@ -21,7 +21,7 @@ public class signup_activity extends AppCompatActivity {
     private EditText etPassword_signup;
     private EditText etCPassword_signup;
     private Button btnCreate;
-    private database sqliteDB;
+    private database sqlDB;
     private TextView tvHaveAnAcc;
     private Spinner spinnerUsertype;
     private EditText etRegNum;
@@ -49,8 +49,10 @@ public class signup_activity extends AppCompatActivity {
                         if (!strFName.isEmpty() && !strLName.isEmpty() && isValidEmail(charseqUsername) &&
                                 strPassword.equals(strCPassword) && !strUsertype.isEmpty() ) {
                             Intent i = new Intent(getApplicationContext(), home_activity.class);
-                            i.putExtra("key_email",charseqUsername.toString()); // have to get from the json
-                            sqliteDB = new database(getApplicationContext(),"EpiCure",null, 1);
+                            i.putExtra("key_email",charseqUsername.toString()); // have to get from the json\
+                            i.putExtra("first_name","isuru");
+                            i.putExtra("last_name","Dharmadasa");
+                            sqlDB = new database(getApplicationContext(),"EpiCure",null, 1);
                             finish();
                             //have to finish the login_activity activity
                             startActivity(i);

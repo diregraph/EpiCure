@@ -41,11 +41,9 @@ public class disease_additionDAO extends DAO {
         if(c.moveToFirst()){
             do{
                 disease_addition d = new disease_addition(
-                        c.getInt(c.getColumnIndex(local_report_id)),
                         c.getString(c.getColumnIndex(disease_name_local)),
                         c.getString(c.getColumnIndex(location_local)),
-                        c.getString(c.getColumnIndex(email)),
-                        c.getString(c.getColumnIndex(sync_status)));
+                        c.getString(c.getColumnIndex(email)));
                 diseases_addition.add(d);
             }while(c.moveToNext());
         }
@@ -54,12 +52,11 @@ public class disease_additionDAO extends DAO {
 
     public void addDisease(disease_addition disease_addition) {
         //use prepared statements for insert
-        command = "INSERT INTO disease_reports (disease_name,location_local,email,sync_status) VALUES (?,?,?,?)";
+        command = "INSERT INTO disease_reports_local (disease_name,location_local,email) VALUES (?,?,?)";
         SQLiteStatement statement = sqlDB.compileStatement(command);
         statement.bindString(1, disease_addition.getDiseaseNameLocal());
         statement.bindString(2, disease_addition.getLocationLocal());
         statement.bindString(3, disease_addition.getEmail());
-        statement.bindString(4, disease_addition.getSyncStatus());
         statement.executeInsert();
     }
 

@@ -44,11 +44,6 @@ public class login_activity extends AppCompatActivity {
                         String strPassword = etPassword_login.getText().toString();
                         if (isValidEmail(charseqUsername) && !strPassword.isEmpty() ) {
                             loginRequest(stringUsername, strPassword);
-                            //Intent i = new Intent(getApplicationContext(), home_activity.class);
-                            //i.putExtra("key_email",charseqUsername ); //have to get from the json
-                            //i.putExtra("key_Name",) have to get the name from the json
-                            //finish();
-                            //startActivity(i);
                         } else if (!isValidEmail(charseqUsername) ){
                             Toast.makeText(getApplicationContext(),"Invalid Email",Toast.LENGTH_SHORT).show();
                         } else if (strPassword.isEmpty() ){
@@ -131,12 +126,24 @@ public class login_activity extends AppCompatActivity {
     private void processResponse(String response){
         try {
             JSONObject jsonObject = new JSONObject(response);
-            boolean status = jsonObject.getBoolean("status");
-            String message = jsonObject.getString("message");
 
+            boolean status = jsonObject.getBoolean("status");
             if (status){
+                String token = jsonObject.getString ("token");
+                String email = jsonObject.getString("email");
+                String password = jsonObject.getString("password");
+                String first_name = jsonObject.getString("first_name");
+                String last_name = jsonObject.getString("last_name");
                 Intent i = new Intent(getApplicationContext(), home_activity.class);
+                i.putExtra("key_email",email);
+                i.putExtra("key_password",email);
+                i.putExtra("first_name",email);
+                i.putExtra("last_name",email);
+                i.putExtra("token",email);
+                finish();
                 startActivity(i);
+            }else {
+                String message = jsonObject.getString("message");
             }
         } catch (JSONException e) {
             e.printStackTrace();

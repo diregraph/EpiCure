@@ -15,13 +15,13 @@ public class user {
     private Integer logged_in;
 
 
-    public user(String email, String fname, String lname, String role, String reg_num, String token, String password, int logged_in ){
+
+    public user(String email, String fname, String lname, String role, String reg_num, String token, int logged_in ){
         this.email = email;
         this.fname = fname;
         this.lname = lname;
         this.role = role;
         this.reg_num = reg_num;
-        this.password = password;
         this.token = token;
         this.logged_in = logged_in;
     }
@@ -52,7 +52,7 @@ public class user {
         this.logged_in = logged_in;
     }
 
-
+    public String getEmail(){return email;}
     public String getFName(){
         return fname;
     }

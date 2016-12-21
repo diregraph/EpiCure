@@ -33,8 +33,9 @@ public class disease_fragment extends Fragment {
     private ListView lvDisease;
     private disease_fragment diseaseFragment = this;
     private diseaseDAO disease_dao;
-    private userDAO user_dao;
     private String email;
+    private userDAO user_dao;
+
 
 
     @Nullable
@@ -43,11 +44,13 @@ public class disease_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_disease, container, false);
         init(view);
 
+
         lnkAddDisease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction fragTrans = getFragmentManager().beginTransaction();
                 add_disease_fragment addDiseaseFrag = new add_disease_fragment();
+                addDiseaseFrag.setEmailStatus(email); //get sync status from internet
                 fragTrans.attach(diseaseFragment);
                 fragTrans.replace(R.id.frmMain, addDiseaseFrag);
                 fragTrans.commit();
@@ -99,5 +102,9 @@ public class disease_fragment extends Fragment {
 //        }else{
 //            lnkAddDisease.setVisibility(View.VISIBLE);
 //        }
+    }
+
+    public void setEmailDiseaseFrag(String email){
+        this.email = email;
     }
 }

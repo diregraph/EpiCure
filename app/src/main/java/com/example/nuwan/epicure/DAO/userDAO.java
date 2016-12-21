@@ -3,6 +3,7 @@ package com.example.nuwan.epicure.DAO;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.example.nuwan.epicure.Models.user;
@@ -53,10 +54,25 @@ public class userDAO extends DAO {
                         c.getString(c.getColumnIndex("role")),
                         c.getString(c.getColumnIndex("reg_num")),
                         c.getString(c.getColumnIndex("token")),
-                        c.getString(c.getColumnIndex("password")),
                         c.getInt(c.getColumnIndex("logged_in")));
             } while (c.moveToNext());
         }
         return user;
+    }
+
+
+    public void addUser(user User) {
+        //use prepared statements for insert
+        command = "INSERT INTO " + tableName + " (email,fname,lname,role,reg_num,password,token,logged_in) VALUES (?,?,?,?,?,?,?,?)";
+        SQLiteStatement statement = sqlDB.compileStatement(command);
+        statement.bindString(1, User.getEmail());
+        statement.bindString(2, User.getFName());
+        statement.bindString(3, User.getLName());
+        statement.bindString(4, User.getRole());
+        statement.bindString(5, User.getRegNum());
+        statement.bindString(6, User.getPassword());
+        statement.bindString(7, User.getToken());
+        statement.bindLong(8, User.getLoggedIn());
+        statement.executeInsert();
     }
 }

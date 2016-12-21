@@ -11,13 +11,12 @@ public class disease_addition {
     private String email;
     private String sync_status;
 
-    public disease_addition(Integer local_report_id, String disease_name_local, String location_local,
-                            String email, String sync_status){
-        this.local_report_id = local_report_id;
+    public disease_addition(String disease_name_local, String location_local,
+                            String email){
         this.disease_name_local = disease_name_local;
         this.location_local = location_local;
         this.email = email;
-        this.sync_status = sync_status;
+        //this.sync_status = sync_status;
     }
 
     public void setDiseaseNameLocal(String disease_name_local){
@@ -32,9 +31,9 @@ public class disease_addition {
         this.email = email;
     }
 
-    public void setSyncStatus(String sync_status){
-        this.sync_status = sync_status;
-    }
+//    //public void setSyncStatus(String sync_status){
+//        this.sync_status = sync_status;
+//    }
 
 
 
@@ -54,8 +53,8 @@ public class disease_addition {
         return this.email;
     }
 
-    public String getSyncStatus(){
-        return this.sync_status;
-    }
+//    public String getSyncStatus(){
+//        return this.sync_status;
+//    }
 
 }
