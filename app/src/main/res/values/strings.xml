@@ -9,7 +9,7 @@
     <string name="prompt_login">elect User Type</string>
 
     <string-array name="spinner_usertype">
-        <item>Normal</item>
+        <item>User</item>
         <item>Public Health Officer</item>
         <item>Medical Officer</item>
     </string-array>

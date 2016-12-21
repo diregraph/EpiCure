@@ -87,7 +87,7 @@ public class signup_activity extends AppCompatActivity {
         spinnerUsertype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (spinnerUsertype.getSelectedItem().toString().equals("Normal")){
+                if (spinnerUsertype.getSelectedItem().toString().equals("User")){
                     etRegNum.setEnabled(false);
                 } else {
                     etRegNum.setEnabled(true);
