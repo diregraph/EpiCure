@@ -53,6 +53,15 @@
         android:textSize="20sp"
         android:text="First aid : Not yet identified"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:layout_below="@+id/tv_first_aid"
+        android:id="@+id/tv_added_by"
+        android:textSize="20sp"
+        android:text="Added By : Not yet seen"/>
+
     <Button
         android:layout_width="150dip"
         android:layout_height="wrap_content"

@@ -11,28 +11,38 @@ import android.util.Log;
 
 public class database extends SQLiteOpenHelper{
     private Context context;
+    private String DB_NAME;
     private String command;
     public database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
-        onCreate(getWritableDatabase());
-    }
-
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        command = "CREATE TABLE IF NOT EXISTS user_login_details (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "email VARCHAR(50));";
-        db.execSQL(command);
-        Log.i("TAG",command);
+        this.DB_NAME = name;
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        command = "DROP TABLE IF EXISTS user_login_details;";
-        Log.i("TAG",command);
-        db.execSQL(command);
-        onCreate(db);
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        command = "CREATE TABLE IF NOT EXISTS user_login_details(" +
+                "email VARCHAR(50) PRIMARY KEY, " +
+                "name VARCHAR(60), " +
+                "role VARCHAR(10), " +
+                "status INTEGER);";
+        //Log.i(constants.TAG,command);
+        sqLiteDatabase.execSQL(command);
+
+        command = "CREATE TABLE IF NOT EXISTS diseases(" +
+                "disease_name VARCHAR(100) PRIMARY KEY, " +
+                "";
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        command = "DROP TABLE IF EXISTS login_detail;";
+        //Log.i(constants.TAG,command);
+        sqLiteDatabase.execSQL(command);
+        onCreate(sqLiteDatabase);
+    }
+
+    public SQLiteDatabase getDatabase(){
+        return getWritableDatabase();
     }
 }
