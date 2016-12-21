@@ -9,10 +9,10 @@ public class constants {
 
     //java sprint tomcat server ---------------------------------------------------------------------------------------------
     //Host computer ip address and port
-    public static final String server_host_ip = "192.168.8.102:8080";
+    public static final String server_host_ip = "10.0.2.2:8000";
 
     //server urls
-    public static final String server_login_url = "http://" + server_host_ip + "/login";
+    public static final String server_login_url = "http://" + server_host_ip + "/signIn";
     public static final String server_disease_search_url = "http://" + server_host_ip + "/diseases/search";
     public static final String server_signup__url = "http://" + server_host_ip + "/signup";
     public static final String server_patient_search_url = "http://" + server_host_ip + "/patients";
