@@ -1,8 +1,10 @@
 package com.example.nuwan.epicure.UI;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -13,6 +15,11 @@ import android.widget.Toast;
 
 import com.example.nuwan.epicure.DATABASE.database;
 import com.example.nuwan.epicure.R;
+import com.example.nuwan.epicure.constants;
+import com.example.nuwan.epicure.server_request;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class signup_activity extends AppCompatActivity {
     private EditText etFName_signup;
@@ -128,5 +135,81 @@ public class signup_activity extends AppCompatActivity {
         tvHaveAnAcc = (TextView) findViewById(R.id.tv_haveAnAcc);
         spinnerUsertype = (Spinner) findViewById(R.id.spinner_usertype);
         etRegNum = (EditText) findViewById(R.id.input_regnum_signup);
+    }
+
+    private void registerUser(final String firstname, final String lastname,
+                              final String email, final String username, final String password, final String role){
+
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("first_name", firstname);
+            json.put("last_name", lastname);
+            json.put("username", username);
+            json.put("password", password);
+            json.put("email", email);
+            json.put("role", role);
+            json.put("registration_no", role);
+        } catch (JSONException e) {
+            Toast.makeText(getApplicationContext(), "JSON error", Toast.LENGTH_SHORT);
+            e.printStackTrace();
+        }
+
+        final String jsonString = json.toString();
+        Log.d(constants.TAG, jsonString);
+
+        final server_request request = new server_request(1,this);
+        request.set_server_url(constants.server_signup__url);
+
+        request.setParams(jsonString, "data");
+
+        try {
+            String req = request.sendPostRequest();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        CountDownTimer timer = new CountDownTimer(4000, 1000) {
+            @Override
+            public void onFinish() {
+                processResponse(request.getResponse());
+            }
+
+            @Override
+            public void onTick(long millisLeft) {
+            }
+        };
+        timer.start();
+
+    }
+
+
+    private void processResponse(String response){
+        if(response == ""){
+            Toast.makeText(this, "Server Timeout", Toast.LENGTH_LONG).show();
+        }else{
+            try {
+                JSONObject jsonRes = new JSONObject(response);
+                boolean status = jsonRes.getBoolean("status");
+                String message = jsonRes.getString("message");
+
+                if (status){
+                    Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(),
+                            home_activity.class);
+                    startActivity(i);
+                    finish();
+
+                }else{
+                    Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                }
+            } catch (JSONException e) {
+                Toast.makeText(this, response,Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+        }
+
+
+
     }
 }
