@@ -10,9 +10,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nuwan.epicure.UI.signup_activity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/current_disease_name"
+        android:text="Current Disease Name"/>
+
     <!-- First Name Label and Input -->
     <android.support.design.widget.TextInputLayout
-        android:layout_marginTop="10dip"
+        android:layout_below="@+id/current_disease_name"
         android:layout_width="match_parent"
         android:id="@+id/lbl_disease_name_edit"
         android:layout_height="wrap_content"
@@ -21,9 +27,17 @@
             android:id="@+id/input_disease_name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Disease Name"
-            android:textSize="30sp"/>
+            android:hint="New Disease Name"
+            android:textSize="20sp"/>
     </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lbl_disease_name_edit"
+        android:layout_marginTop="30sp"
+        android:id="@+id/current_location_name"
+        android:text="Current Location Name"/>
 
     <!-- Last Name Label and Input -->
     <android.support.design.widget.TextInputLayout
@@ -36,8 +50,8 @@
             android:id="@+id/input_location_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Location"
-            android:textSize="30sp"/>
+            android:hint="New Location"
+            android:textSize="20sp"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button

@@ -45,6 +45,28 @@ public class disease_fragment extends Fragment {
             }
         });
 
+        lnkEditDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragTrans = getFragmentManager().beginTransaction();
+                edit_details_list_fragment editDiseaseListFrag = new edit_details_list_fragment();
+                fragTrans.attach(diseaseFragment);
+                fragTrans.replace(R.id.frmMain, editDiseaseListFrag);
+                fragTrans.commit();
+            }
+        });
+
+        lnkAddDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragTrans = getFragmentManager().beginTransaction();
+                add_detail_list_fragment addDetailListFrag = new add_detail_list_fragment();
+                fragTrans.attach(diseaseFragment);
+                fragTrans.replace(R.id.frmMain, addDetailListFrag);
+                fragTrans.commit();
+            }
+        });
+
         return view;
 
     }
