@@ -52,7 +52,7 @@ public class home_activity extends AppCompatActivity
         tvNavHeaderEmail = (TextView) header.findViewById(R.id.tv_navHeaderEmail);
         Bundle bundle = getIntent().getExtras();
             if (bundle != null ){
-                tvNavHeaderEmail.setText(bundle.getString("key_email"));
+                tvNavHeaderEmail.setText(bundle.getCharSequence("key_email").toString());
             }
     }
 
@@ -95,12 +95,11 @@ public class home_activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
-        FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (id == R.id.nav_disease) {
             toolbar.setTitle("Diseases");
             disease_fragment disease_fragment = new disease_fragment();
-            fragmentManager.beginTransaction().replace(R.id.frmMain,disease_fragment).commit();
+            fragTrans.replace(R.id.frmMain,disease_fragment);
 
         } else if (id == R.id.nav_location) {
             toolbar.setTitle("Location");

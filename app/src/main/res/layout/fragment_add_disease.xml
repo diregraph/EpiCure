@@ -15,8 +15,7 @@
         android:layout_marginTop="10dip"
         android:layout_width="match_parent"
         android:id="@+id/lbl_disease_name_add"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
         <EditText
             android:id="@+id/input_disease_name_add"
             android:layout_width="match_parent"
@@ -41,11 +40,19 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:layout_width="150dip"
+        android:layout_width="115dip"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:id="@+id/btn_add_disease"
         android:text="Add Disease"/>
+
+    <Button
+        android:layout_width="115dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_cancel_add_disease"
+        android:text="Cancel"/>
 
 </RelativeLayout>

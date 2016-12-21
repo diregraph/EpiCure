@@ -3,6 +3,8 @@ package com.example.nuwan.epicure.FRAGMENT;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ public class disease_fragment extends Fragment {
     private TextView lnkEditDetails;
     private TextView lnkAddDetails;
     private ListView lvDisease;
+    private disease_fragment diseaseFragment = this;
 
 
     @Nullable
@@ -30,13 +33,29 @@ public class disease_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_disease, container, false);
         init(view);
+
+        lnkAddDisease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragTrans = getFragmentManager().beginTransaction();
+                add_disease_fragment addDiseaseFrag = new add_disease_fragment();
+                fragTrans.attach(diseaseFragment);
+                fragTrans.replace(R.id.frmMain, addDiseaseFrag);
+                fragTrans.commit();
+            }
+        });
+
         return view;
+
     }
+
+
+
     private void init(View view) {
         etSearch = (EditText)view.findViewById(R.id.etSearchDisease);
         lvDisease = (ListView)view.findViewById(R.id.lstDisease);
         lnkAddDisease = (TextView)view.findViewById(R.id.tv_add_disease);
         lnkAddDetails = (TextView)view.findViewById(R.id.tv_add_details);
-        lnkAddDetails = (TextView)view.findViewById(R.id.tv_edit_disease);
+        lnkEditDetails = (TextView)view.findViewById(R.id.tv_edit_disease);
     }
 }
